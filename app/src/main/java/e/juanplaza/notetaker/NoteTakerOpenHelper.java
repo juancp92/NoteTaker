@@ -9,7 +9,7 @@ public class NoteTakerOpenHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "NoteTaker.db";
     public static final int DATABASE_VERSION = 1;
 
-    public NoteTakerOpenHelper(@Nullable Context context) {
+    public NoteTakerOpenHelper( Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

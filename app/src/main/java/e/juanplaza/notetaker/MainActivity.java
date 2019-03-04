@@ -2,6 +2,7 @@ package e.juanplaza.notetaker;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -25,11 +26,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private NoteRecyclerAdapter mNoteRecyclerAdapter;
-    private RecyclerView recyclerNotes;
     private RecyclerView mRecyclerItems;
     private LinearLayoutManager mNotesLayoutManager;
     private CourseRecyclerAdapter mCourseRecyclerAdapter;
     private GridLayoutManager mCoursesLayoutManager;
+    private NoteTakerOpenHelper mDbOpenHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mDbOpenHelper = new NoteTakerOpenHelper(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +59,12 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         initializeDisplayContent();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mDbOpenHelper.close();
+        super.onDestroy();
     }
 
     @Override
@@ -82,6 +91,7 @@ public class MainActivity extends AppCompatActivity
 
     private void initializeDisplayContent() {
 
+        DataManager.loadFromDatabase(mDbOpenHelper);
         mRecyclerItems = (RecyclerView) findViewById(R.id.list_items);
         mNotesLayoutManager = new LinearLayoutManager(this);
         mCoursesLayoutManager = new GridLayoutManager(this,

@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Created by Jim.
+ * Created by Juan.
  */
 
 public class DatabaseDataWorker {
@@ -15,24 +15,18 @@ public class DatabaseDataWorker {
     }
 
     public void insertCourses() {
-        insertCourse("android_intents", "Android Programming with Intents");
-        insertCourse("android_async", "Android Async Programming and Services");
-        insertCourse("java_lang", "Java Fundamentals: The Java Language");
-        insertCourse("java_core", "Java Fundamentals: The Core Platform");
+        insertCourse("TP1", "Taller de Programacion 1");
+        insertCourse("M1", "Matematica 1");
+        insertCourse("LS", "Logica Simbolica");
+        insertCourse("TG", "Teoria de Grafos");
     }
 
     public void insertSampleNotes() {
-        insertNote("android_intents", "Dynamic intent resolution", "Wow, intents allow components to be resolved at runtime");
-        insertNote("android_intents", "Delegating intents", "PendingIntents are powerful; they delegate much more than just a component invocation");
+        insertNote("TP1", "Punteros", "Los punteros son la forma de referenciar en memoria");
+        insertNote("TP1", "C", "C es el lenguaje de programacion utilizado en la materia");
 
-        insertNote("android_async", "Service default threads", "Did you know that by default an Android Service will tie up the UI thread?");
-        insertNote("android_async", "Long running operations", "Foreground Services can be tied to a notification icon");
-
-        insertNote("java_lang", "Parameters", "Leverage variable-length parameter lists?");
-        insertNote("java_lang", "Anonymous classes", "Anonymous classes simplify implementing one-use types");
-
-        insertNote("java_core", "Compiler options", "The -jar option isn't compatible with with the -cp option");
-        insertNote("java_core", "Serialization", "Remember to include SerialVersionUID to assure version compatibility");
+        insertNote("TG", "Grafo Dirigido", "Grafo en el cual los aristas deben ser recorridos en un solo sentido");
+        insertNote("TG", "Dijkstra", "Algoritmo de menor recorrido de grafos con peso en las arista");
     }
 
     private void insertCourse(String courseId, String title) {

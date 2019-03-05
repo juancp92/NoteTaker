@@ -33,7 +33,6 @@ public class NoteActivity extends AppCompatActivity
     private Spinner mSpinnerCourses;
     private EditText mTextNoteTitle;
     private EditText mTextNoteText;
-    private int mNotePosition;
     private boolean mIsCanceling;
     private String mOriginalNoteCourseId;
     private String mOriginalNoteTitle;
@@ -257,6 +256,9 @@ public class NoteActivity extends AppCompatActivity
             return true;
         }else if (id == R.id.action_cancel) {
             mIsCanceling = true;
+            finish();
+        }else if (id == R.id.action_delete){
+            deleteNoteFromDatabase();
             finish();
         }
 

@@ -7,7 +7,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Created by Jim.
+ * Created by Juan.
  */
 
 public final class CourseInfo implements Parcelable {

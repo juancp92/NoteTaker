@@ -266,10 +266,10 @@ public class NoteActivity extends AppCompatActivity
     }
 
     private void sendEmail() {
-        CourseInfo course = (CourseInfo) mSpinnerCourses.getSelectedItem();
+        String course = selectedCourseId();
         String subject = mTextNoteTitle.getText().toString();
         String text = "Check out what I learnead \"" +
-                course.getTitle() +"\"\n" + mTextNoteText.getText().toString();
+                course +"\"\n" + mTextNoteText.getText().toString();
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("message/rfc2822");
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);

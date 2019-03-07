@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     private CourseRecyclerAdapter mCourseRecyclerAdapter;
     private GridLayoutManager mCoursesLayoutManager;
     private NoteTakerOpenHelper mDbOpenHelper;
+    private FloatingActionButton mFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +50,8 @@ public class MainActivity extends AppCompatActivity
 
         mDbOpenHelper = new NoteTakerOpenHelper(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, NoteActivity.class));
@@ -179,8 +180,10 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_notes) {
             displayNotes();
+            mFab.show();
         } else if (id == R.id.nav_courses) {
             displayCourses();
+            mFab.hide();
         } else if (id == R.id.nav_share) {
             //handleSelection(R.string.nav_share_message);
             handleShare();
